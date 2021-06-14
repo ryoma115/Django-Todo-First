@@ -1,0 +1,14 @@
+{% extends 'todo/base.html' %}
+
+
+{% block body %}
+
+<ul class="list-group">
+  <li class="list-group-item"><h2>{{ object.title }}</h2>
+  <p>{{ object.content }}</p>
+  <p>{{ object.limit }}</p></li>
+</ul>
+  
+{% endblock body %}
+  
+

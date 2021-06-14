@@ -1,0 +1,13 @@
+{% extends 'todo/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block body %}
+
+<form method="POST">
+  {% csrf_token %}
+  <p>{{ form|crispy }}</p>
+  <button type="sbumit" class="btn btn-dark">UPDATE!</button>
+</form>
+
+{% endblock body %}
