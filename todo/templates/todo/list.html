@@ -9,6 +9,14 @@
     <button type="submit" class="btn btn-primary btn-lg btn-block">CREATE TO DO</button>
   </form>
   
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <form action="{% url 'month:month' %}">
+      <button type="submit" class="btn btn-light">カレンダー</button>
+    </form>
+    <form action="{% url 'list' %}">
+      <button type="submit" class="btn btn-light">リスト</button>
+    </form>
+  </div>
   <ul class="list-group">
     {% for todo in todos %}
     <li class="list-group-item"> 
@@ -21,7 +29,7 @@
             <button type="submit" class="btn btn-outline-danger">delete</button>
           </form>
           <form class=”form-inline” action="{% url 'update' todo.id %}">
-            <button type="submit" class="btn btn-outline-success">editw</button>
+            <button type="submit" class="btn btn-outline-success">edit</button>
           </form>
       </div>
     </li>

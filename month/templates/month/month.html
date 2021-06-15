@@ -1,43 +1,53 @@
-{% extends 'month/base.html' %}
+{% extends 'todo/base.html' %}
 
 
-{% block content %}
+{% block body %}
+<div class="container" mt-3>
+  <a href="{% url 'month:month' month_previous.year month_previous.month %}">前月</a>
+  {{ month_current | date:'Y年m月'}}
+  <a href="{% url 'month:month' month_next.year month_next.month %}">次月</a><br>
 
-<a href="{% url 'month:month' month_previous.year month_previous.month %}">前月</a>
- {{ month_current | date:'Y年m月'}}
- <a href="{% url 'month:month' month_next.year month_next.month %}">次月</a>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <form action="{% url 'month:month' %}">
+      <button type="submit" class="btn btn-light">カレンダー</button>
+    </form>
+    <form action="{% url 'list' %}">
+      <button type="submit" class="btn btn-light">リスト</button>
+    </form>
+  </div>
 
- <table class="table">
-   <thead>
-   <tr>
-     
-     {% for w in week_names %}
-       <th>{{ w }}</th>
-     {% endfor %}
-   </tr>
-   </thead>
-   <tbody>
-    {% for week in month_days_with_todo %}
-      <tr>
-        {% for day in week %}
-          {% if now == day.date %}
-            <td class='table-success'>
-              {% else %}
-            <td>
+  <table class="table">
+    <thead>
+    <tr>
+      
+      {% for w in week_names %}
+        <th style="width: 14%">{{ w }}</th>
+      {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+      {% for week in month_days_with_todo %}
+        <tr>
+          {% for day in week %}
+            {% if now == day.date %}
+              <td class='table-success'>
+                {% else %}
+              <td>
+            {% endif %}
+              
+          {% if month_current.month != day.date.month %}
+            {{ day.date | date:"m/d"}}
+          {% else %}
+            {{ day.date.day }}
           {% endif %}
+          {{ day.todo.title }}          
             
-        {% if month_current.month != day.date.month %}
-          {{ day.date | date:"m/d"}}
-        {% else %}
-          {{ day.date.day }}
-        {% endif %}
-        {{ day.todo.title }}          
-          
-        </td>
-        {% endfor %}
-      </tr>
-    {% endfor %}
-   </tbody>
- </table> 
-{% endblock content %}
+          </td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table> 
+  {% endblock body %}
+</div>
   
