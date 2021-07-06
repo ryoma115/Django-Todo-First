@@ -5,7 +5,7 @@
 {% block body %}
 
 <div class="content">
-  <form action="{% url 'create' %}">
+  <form action="{% url 'todo:create' %}">
     <button type="submit" class="btn btn-primary btn-lg btn-block">CREATE TO DO</button>
   </form>
   
@@ -13,22 +13,22 @@
     <form action="{% url 'month:month' %}">
       <button type="submit" class="btn btn-light">カレンダー</button>
     </form>
-    <form action="{% url 'list' %}">
+    <form action="{% url 'todo:list' %}">
       <button type="submit" class="btn btn-light">リスト</button>
     </form>
   </div>
   <ul class="list-group">
     {% for todo in todos %}
     <li class="list-group-item"> 
-      <h2><a href="{% url 'detail' todo.id %}" style="text-decoration: none">
-        {{ todo.title }}</a></h2>
+      <a href="{% url 'todo:detail' todo.id %}" style="text-decoration: none; color: black;">
+      <h2>{{ todo.title }}</h2>
       <p>{{ todo.content }}</p>
-      <p>{{ todo.limit }}</p>
+      <p>{{ todo.limit }}</p></a>
       <div class="btn-group" role="group">
-          <form class=”form-inline” action="{% url 'delete' todo.id %}">
+          <form class=”form-inline” action="{% url 'todo:delete' todo.id %}">
             <button type="submit" class="btn btn-outline-danger">delete</button>
           </form>
-          <form class=”form-inline” action="{% url 'update' todo.id %}">
+          <form class=”form-inline” action="{% url 'todo:update' todo.id %}">
             <button type="submit" class="btn btn-outline-success">edit</button>
           </form>
       </div>

@@ -51,7 +51,7 @@ class MonthCalendarMixin(BaseCalendarMixin):
         for todo in todos:
           if day == todo.limit:
             month_days_with_todo[-1][-1]["todo"] = todo
-            
+              
     return month_days_with_todo
   
   def get_current_month(self):

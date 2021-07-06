@@ -11,10 +11,13 @@
     <form action="{% url 'month:month' %}">
       <button type="submit" class="btn btn-light">カレンダー</button>
     </form>
-    <form action="{% url 'list' %}">
+    <form action="{% url 'todo:list' %}">
       <button type="submit" class="btn btn-light">リスト</button>
     </form>
   </div>
+  <form action="{% url 'todo:create' %}">
+    <button type="submit" class="btn btn-primary btn-lg btn-block">CREATE TO DO</button>
+  </form>
 
   <table class="table">
     <thead>
@@ -40,8 +43,11 @@
           {% else %}
             {{ day.date.day }}
           {% endif %}
-          {{ day.todo.title }}          
-            
+          {% if day.todo.pk %}
+            <a href="{% url 'todo:detail' day.todo.pk %}" style="text-decoration:none; color: black;">
+          {% endif %}
+          {{ day.todo.title }}
+         </a>
           </td>
           {% endfor %}
         </tr>
