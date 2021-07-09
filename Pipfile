@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django-crispy-forms = "*"
 django = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
