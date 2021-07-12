@@ -4,9 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django-crispy-forms = "*"
-django = "*"
-dj-database-url = "*"
+django-crispy-forms = "==1.12.0"
+dj-database-url = "==0.5.0"
+Django = "==3.2.5"
+asgiref = "==3.4.1"
+sqlparse = "==0.4.1"
+django-heroku = "==0.3.1"
+gunicorn = "==19.9.0"
+psycopg2 = "==2.8.2"
+pytz = "==2021.1"
+whitenoise = "==4.1.2"
+psycopg2-binary = "*"
 
 [dev-packages]
 
