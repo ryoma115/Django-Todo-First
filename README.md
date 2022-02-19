@@ -1,6 +1,9 @@
 # django で作成した TODO アプリ
 
- ## 概要
+## URL
+https://todos115.herokuapp.com/
+
+## 概要
 よくあるtodoリストにカレンダーの機能をpythonで追加し、  
 カレンダー表示とリスト表示をできるようにしたアプリ。
 
